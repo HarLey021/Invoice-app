@@ -12,7 +12,7 @@ const Home: React.FC = () => {
     }
   }, []);
 
-  const [invoices, setInvoices] = useState(() => {
+  const [invoices] = useState(() => {
     const saved = localStorage.getItem("invoices");
     return saved ? JSON.parse(saved) : [];
   });
