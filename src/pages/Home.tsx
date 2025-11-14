@@ -1,3 +1,6 @@
+// import Empty from "../components/empty/Empty";
+import Invoice from "../components/invoice/Invoice";
+
 const Home: React.FC = () => {
   return (
     <>
@@ -33,6 +36,8 @@ const Home: React.FC = () => {
             </button>
           </div>
         </div>
+        {/* <Empty /> */}
+        <Invoice />
       </div>
     </>
   );
