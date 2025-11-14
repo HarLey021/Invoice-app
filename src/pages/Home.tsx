@@ -1,7 +1,22 @@
-// import Empty from "../components/empty/Empty";
+import Empty from "../components/empty/Empty";
+import { useEffect, useState } from "react";
 import Invoice from "../components/invoice/Invoice";
+import data from "../data.json";
 
 const Home: React.FC = () => {
+  useEffect(() => {
+    const saved = localStorage.getItem("invoices");
+
+    if (!saved) {
+      localStorage.setItem("invoices", JSON.stringify(data));
+    }
+  }, []);
+
+  const [invoices, setInvoices] = useState(() => {
+    const saved = localStorage.getItem("invoices");
+    return saved ? JSON.parse(saved) : [];
+  });
+
   return (
     <>
       <div className="w-full min-h-screen bg-light dark:bg-very-dark px-6 py-8">
@@ -36,8 +51,11 @@ const Home: React.FC = () => {
             </button>
           </div>
         </div>
-        {/* <Empty /> */}
-        <Invoice />
+        {invoices.length === 0 && <Empty />}
+
+        {invoices.map((invoice: InvoiceInterface) => (
+          <Invoice key={invoice.id} invoice={invoice} />
+        ))}
       </div>
     </>
   );
