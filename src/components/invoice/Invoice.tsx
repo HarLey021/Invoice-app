@@ -1,7 +1,16 @@
+import { useNavigate } from "react-router-dom";
+import type { InvoiceProps } from "../../types";
+
 const Invoice: React.FC<InvoiceProps> = ({ invoice }) => {
+  const navigate = useNavigate();
   return (
     <>
-      <div className="w-full h-[146px] bg-white dark:bg-dark rounded-lg shadow-[0_10px_10px_-10px_rgba(72,84,159,0.1)] p-6 mb-4">
+      <div
+        onClick={() => {
+          navigate(`/${invoice.id}`);
+        }}
+        className="w-full h-[146px] bg-white dark:bg-dark rounded-lg shadow-[0_10px_10px_-10px_rgba(72,84,159,0.1)] p-6 mb-4"
+      >
         <div className="flex justify-between">
           <div>
             <h3 className="text-[15px] text-black dark:text-white font-bold tracking-[-0.25px] mb-6">

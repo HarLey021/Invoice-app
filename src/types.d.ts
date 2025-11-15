@@ -1,3 +1,5 @@
+import type { SetStateAction } from "react";
+
 interface InvoiceInterface {
   id: string;
   createdAt: string;
@@ -34,4 +36,9 @@ interface InvoiceInterface {
 
 type InvoiceProps = {
   invoice: InvoiceInterface;
+};
+
+type InvoicesContextType = {
+  invoices: InvoiceInterface[];
+  setInvoices: React.Dispatch<SetStateAction<InvoiceInterface[]>>;
 };
