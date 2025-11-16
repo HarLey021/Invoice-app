@@ -1,24 +1,12 @@
 import Empty from "../components/empty/Empty";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import Invoice from "../components/invoice/Invoice";
-import data from "../data.json";
+
 import { InvoicesContext } from "../contexts/InvoiceContext";
 import type { InvoiceInterface, InvoicesContextType } from "../types";
 
 const Home: React.FC = () => {
-  const { invoices, setInvoices } =
-    useContext<InvoicesContextType>(InvoicesContext);
-
-  useEffect(() => {
-    const saved = localStorage.getItem("invoices");
-
-    if (saved) {
-      setInvoices(JSON.parse(saved));
-    } else {
-      localStorage.setItem("invoices", JSON.stringify(data));
-      setInvoices(data as InvoiceInterface[]);
-    }
-  }, [setInvoices]);
+  const { invoices } = useContext<InvoicesContextType>(InvoicesContext);
 
   return (
     <>
