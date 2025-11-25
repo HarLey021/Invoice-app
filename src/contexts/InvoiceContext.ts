@@ -4,4 +4,6 @@ import type { InvoicesContextType } from "../types";
 export const InvoicesContext = createContext<InvoicesContextType>({
   invoices: [],
   setInvoices: () => {},
+  showEditInvoice: false,
+  setShowEditInvoice: () => {},
 });

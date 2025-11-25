@@ -5,6 +5,7 @@ import HeaderLayout from "./layouts/HeaderLayout.tsx";
 import Home from "./pages/Home.tsx";
 import InvoiceDetails from "./pages/InvoiceDetails.tsx";
 import ContextProvider from "./ContextProvider.tsx";
+import Create from "./pages/create.tsx";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
       {
         path: "/:id",
         element: <InvoiceDetails />,
+      },
+      {
+        path: "/create",
+        element: <Create />,
       },
     ],
   },

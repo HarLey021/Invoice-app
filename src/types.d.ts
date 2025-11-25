@@ -41,4 +41,6 @@ type InvoiceProps = {
 type InvoicesContextType = {
   invoices: InvoiceInterface[];
   setInvoices: React.Dispatch<SetStateAction<InvoiceInterface[]>>;
+  showEditInvoice: boolean;
+  setShowEditInvoice: React.Dispatch<SetStateAction<boolean>>;
 };

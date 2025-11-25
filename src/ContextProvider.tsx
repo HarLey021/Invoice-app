@@ -7,6 +7,7 @@ const ContextProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [invoices, setInvoices] = useState<InvoiceInterface[]>([]);
+  const [showEditInvoice, setShowEditInvoice] = useState<boolean>(false);
 
   useEffect(() => {
     const saved = localStorage.getItem("invoices");
@@ -20,7 +21,9 @@ const ContextProvider: React.FC<{ children: React.ReactNode }> = ({
   }, [setInvoices]);
 
   return (
-    <InvoicesContext.Provider value={{ invoices, setInvoices }}>
+    <InvoicesContext.Provider
+      value={{ invoices, setInvoices, showEditInvoice, setShowEditInvoice }}
+    >
       {children}
     </InvoicesContext.Provider>
   );
