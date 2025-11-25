@@ -13,7 +13,7 @@ const InvoiceDetails: React.FC = () => {
 
   return (
     <>
-      <div className="w-full min-h-screen bg-light dark:bg-very-dark px-6 py-8">
+      <div className="w-full min-h-screen bg-light dark:bg-very-dark px-6 py-26 ">
         <div className="flex items-center mb-8">
           <img
             className="w-[5px] h-[9px] mr-6"
