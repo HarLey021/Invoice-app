@@ -5,7 +5,7 @@ import HeaderLayout from "./layouts/HeaderLayout.tsx";
 import Home from "./pages/Home.tsx";
 import InvoiceDetails from "./pages/InvoiceDetails.tsx";
 import ContextProvider from "./ContextProvider.tsx";
-import Create from "./pages/create.tsx";
+import Create from "./pages/Create.tsx";
 
 const router = createBrowserRouter([
   {
