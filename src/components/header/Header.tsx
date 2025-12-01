@@ -7,7 +7,7 @@ const Header: React.FC = () => {
     document.documentElement.classList.toggle("dark", dark);
   }, [dark]);
   return (
-    <div className="w-full flex justify-between items-center h-18 bg-header-dark dark:bg-dark fixed">
+    <div className="w-full flex justify-between items-center h-18 bg-header-dark dark:bg-dark fixed z-100">
       <img src="/logo-full.svg" alt="logo" className="w-18 h-18" />
       <div className="flex items-center">
         <div className="w-18 h-18 flex justify-center items-center">

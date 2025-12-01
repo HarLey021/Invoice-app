@@ -44,3 +44,8 @@ type InvoicesContextType = {
   showEditInvoice: boolean;
   setShowEditInvoice: React.Dispatch<SetStateAction<boolean>>;
 };
+
+type ItemProps = {
+  id: string;
+  deleteItem: (id: string) => void;
+};
