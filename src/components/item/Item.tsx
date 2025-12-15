@@ -46,7 +46,10 @@ const Item: React.FC<ItemProps> = ({ id, deleteItem }) => {
             </div>
           </div>
 
-          <button onClick={() => deleteItem(id)} className="pt-6">
+          <button
+            onClick={() => deleteItem(id)}
+            className="pt-6 cursor-pointer"
+          >
             <img src="/icon-delete.svg" alt="" />
           </button>
         </div>

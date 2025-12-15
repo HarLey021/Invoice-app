@@ -18,7 +18,7 @@ const Header: React.FC = () => {
         </div>
         <div className="w-18 h-18 border-l border-[#494E6E] flex justify-center items-center">
           <img
-            src="image-avatar.jpg"
+            src="/image-avatar.jpg"
             alt="avatar"
             className="w-8 h-8 rounded-4xl"
           />

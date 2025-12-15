@@ -6,10 +6,16 @@ import { InvoicesContext } from "../contexts/InvoiceContext";
 const InvoiceDetails: React.FC = () => {
   const navigate = useNavigate();
   const klickedId: string | undefined = useParams().id;
-  const { invoices } = useContext<InvoicesContextType>(InvoicesContext);
+  const { invoices, setShowEditInvoice } =
+    useContext<InvoicesContextType>(InvoicesContext);
   const invoice: InvoiceInterface | undefined = invoices.find(
     (inv) => inv.id === klickedId
   );
+
+  const handleEdit = () => {
+    setShowEditInvoice(true);
+    navigate(`/edit/${klickedId}`);
+  };
 
   return (
     <>
@@ -170,7 +176,10 @@ const InvoiceDetails: React.FC = () => {
       </div>
 
       <div className="w-full h-23 bg-white dark:bg-dark px-6 py-[21px] flex justify-between items-center">
-        <button className="w-18 h-12 bg-[#F9FAFE] dark:bg-[#252945] rounded-3xl flex justify-center items-center text-[15px] font-bold tracking-[-0.25px] text-[#7E88C3] dark:text-light-grey cursor-pointer">
+        <button
+          onClick={handleEdit}
+          className="w-18 h-12 bg-[#F9FAFE] dark:bg-[#252945] rounded-3xl flex justify-center items-center text-[15px] font-bold tracking-[-0.25px] text-[#7E88C3] dark:text-light-grey cursor-pointer"
+        >
           Edit
         </button>
         <button className="w-[90px] h-12 bg-red rounded-3xl flex justify-center items-center text-[15px] font-bold tracking-[-0.25px] text-white cursor-pointer">

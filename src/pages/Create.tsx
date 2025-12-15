@@ -1,13 +1,17 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import Item from "../components/item/Item";
 import { v4 as uuidv4 } from "uuid";
+import { InvoicesContext } from "../contexts/InvoiceContext";
+import type { InvoiceInterface, InvoicesContextType } from "../types";
 
 const Create: React.FC = () => {
   const navigate = useNavigate();
   const [showNet, setShowNet] = useState<boolean>(false);
   const [net, setNet] = useState<string>("Net 30 Days");
   const [items, setItems] = useState<any[]>([]);
+  const { id } = useParams();
+  const isEditMode = Boolean(id);
 
   const addItem = () => {
     setItems((prev) => [...prev, { id: uuidv4() }]);
@@ -16,6 +20,12 @@ const Create: React.FC = () => {
   const deleteItem = (id: string) => {
     setItems((prev) => prev.filter((item) => item.id !== id));
   };
+
+  const { invoices } = useContext<InvoicesContextType>(InvoicesContext);
+  const invoice: InvoiceInterface | undefined = invoices.find(
+    (inv) => inv.id === id
+  );
+  console.log(invoice);
 
   return (
     <>
@@ -36,13 +46,17 @@ const Create: React.FC = () => {
           </div>
 
           <div>
-            {/* <p>
-            Edit <span>#</span>
-            {}
-          </p> */}
-            <h1 className="text-2xl font-bold text-black dark:text-white tracking-[-0.5px] mb-[22px]">
-              New Invoice
-            </h1>
+            {isEditMode ? (
+              <div className="flex text-2xl font-bold tracking-[-0.5px] text-black dark:text-white">
+                <p className="mr-1.5 ">Edit</p>
+                <span className="text-dark-grey">#</span>
+                <p>{id}</p>
+              </div>
+            ) : (
+              <h1 className="text-2xl font-bold text-black dark:text-white tracking-[-0.5px] mb-[22px]">
+                New Invoice
+              </h1>
+            )}
           </div>
 
           <div className=" w-full mb-[41px]">
@@ -56,6 +70,11 @@ const Create: React.FC = () => {
               </h6>
 
               <input
+                // value={
+                //   invoice?.clientAddress.street
+                //     ? invoice?.clientAddress.street
+                //     : ""
+                // }
                 className="w-full h-12 bg-white dark:bg-dark border border-light-grey dark:border-[#252945] rounded-sm text-[15px] font-bold tracking-[-0.25px] text-black dark:text-white pl-5"
                 type="text"
               />
@@ -290,7 +309,7 @@ const Create: React.FC = () => {
             ))}
             <button
               onClick={addItem}
-              className="w-full h-12 bg-[#F9FAFE] dark:bg-[#252945] rounded-3xl text-[15px] font-bold text-[#7E88C3] dark:text-dark-grey tracking-[-0.25px]"
+              className="w-full h-12 bg-[#F9FAFE] dark:bg-[#252945] rounded-3xl text-[15px] font-bold text-[#7E88C3] dark:text-dark-grey tracking-[-0.25px] cursor-pointer"
             >
               + Add New Item
             </button>
@@ -299,7 +318,30 @@ const Create: React.FC = () => {
 
         <div className="w-full h-16 bg-[linear-gradient(180deg,rgba(0,0,0,0)_0%,rgba(0,0,0,0.1)_100%)] dark:bg-very-dark"></div>
 
-        <div className="w-full h-23 bg-white dark:bg-dark"></div>
+        <div className="w-full h-23 bg-white dark:bg-dark items-center px-6">
+          {isEditMode ? (
+            <div className="w-full h-full flex justify-between items-center">
+              <button className="w-24 h-12 bg-[#F9FAFE] dark:bg-[#252945] rounded-3xl text-[#7E88C3] dark:text-light-grey">
+                Cancel
+              </button>
+              <button className="w-[138px] h-12 bg-violet rounded-3xl text-white ">
+                Save Changes
+              </button>
+            </div>
+          ) : (
+            <div className="w-full h-full flex justify-between items-center">
+              <button className="w-21 h-12 bg-[#F9FAFE] dark:bg-[#252945] rounded-3xl text-[#7E88C3] dark:text-light-grey">
+                Discard
+              </button>
+              <button className="w-[117px] h-12 bg-header-dark rounded-3xl text-dark-grey dark:text-light-grey">
+                Save as Draft
+              </button>
+              <button className="w-28 h-12 bg-violet rounded-3xl text-white ">
+                Save & Send
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     </>
   );

@@ -7,7 +7,7 @@ const Invoice: React.FC<InvoiceProps> = ({ invoice }) => {
     <>
       <div
         onClick={() => {
-          navigate(`/${invoice.id}`);
+          navigate(`/invoice/${invoice.id}`);
         }}
         className="w-full h-[146px] bg-white dark:bg-dark rounded-lg shadow-[0_10px_10px_-10px_rgba(72,84,159,0.1)] p-6 mb-4 cursor-pointer"
       >

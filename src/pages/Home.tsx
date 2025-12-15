@@ -1,7 +1,6 @@
 import Empty from "../components/empty/Empty";
 import { useContext } from "react";
 import Invoice from "../components/invoice/Invoice";
-
 import { InvoicesContext } from "../contexts/InvoiceContext";
 import type { InvoiceInterface, InvoicesContextType } from "../types";
 import { useNavigate } from "react-router-dom";
