@@ -49,3 +49,7 @@ type ItemProps = {
   id: string;
   deleteItem: (id: string) => void;
 };
+
+type DeleteProps = {
+  setDeleteActive: React.Dispatch<SetStateAction<boolean>>;
+};

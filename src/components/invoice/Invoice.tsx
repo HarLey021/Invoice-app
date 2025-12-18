@@ -9,16 +9,16 @@ const Invoice: React.FC<InvoiceProps> = ({ invoice }) => {
         onClick={() => {
           navigate(`/invoice/${invoice.id}`);
         }}
-        className="w-full h-[146px] bg-white dark:bg-dark rounded-lg shadow-[0_10px_10px_-10px_rgba(72,84,159,0.1)] p-6 mb-4 cursor-pointer"
+        className="w-full h-[146px] bg-white dark:bg-dark rounded-lg shadow-[0_10px_10px_-10px_rgba(72,84,159,0.1)] p-6 mb-4 cursor-pointer md:flex md:flex-row md:items-center md:h-18 md:pr-8"
       >
-        <div className="flex justify-between">
-          <div>
-            <h3 className="text-[15px] text-black dark:text-white font-bold tracking-[-0.25px] mb-6">
+        <div className="flex justify-between md:justify-start md:items-center">
+          <div className="md:flex md:flex-row">
+            <h3 className="text-[15px] text-black dark:text-white font-bold tracking-[-0.25px] mb-6 md:m-0 md:mr-7">
               <span className="text-[#7E88C3]">#</span>
               {invoice.id}
             </h3>
 
-            <h4 className="text-[13px] text-[#7E88C3] dark:text-light-grey font-bold mb-[9px]">
+            <h4 className="text-[13px] text-[#7E88C3] dark:text-light-grey font-medium mb-[9px] md:m-0 md:mr-[51px] md:mt-[3px]">
               <span className="text-dark-grey dark:text-light-grey">Due</span>{" "}
               {new Date(invoice.paymentDue).toLocaleDateString("en-GB", {
                 day: "2-digit",
@@ -27,13 +27,13 @@ const Invoice: React.FC<InvoiceProps> = ({ invoice }) => {
               })}
             </h4>
           </div>
-          <h4 className="text-[13px] text-[#858BB2] dark:text-white font-medium mt-0.5">
+          <h4 className="text-[13px] text-[#858BB2] dark:text-white font-medium mt-0.5  md:m-0 md:mt-[3px]">
             {invoice.clientName}
           </h4>
         </div>
 
-        <div className="flex justify-between">
-          <h3 className="text-[15px] text-black dark:text-white font-bold tracking-[-0.25px]">
+        <div className="flex justify-between md:items-center md:ml-auto">
+          <h3 className="text-[15px] text-black dark:text-white font-bold tracking-[-0.25px]  md:m-0 md:mr-10">
             £ {invoice.total.toFixed(2)}
           </h3>
           <div
@@ -43,7 +43,7 @@ const Invoice: React.FC<InvoiceProps> = ({ invoice }) => {
                 : invoice.status === "pending"
                 ? "bg-orange/10"
                 : "bg-header-dark/10 dark:bg-light-grey/10"
-            }  rounded-md  flex justify-center items-center mt-[-25px]`}
+            }  rounded-md  flex justify-center items-center mt-[-25px] md:m-0 md:mr-5`}
           >
             <div
               className={`w-2 h-2 mr-2 ${
@@ -67,6 +67,11 @@ const Invoice: React.FC<InvoiceProps> = ({ invoice }) => {
             </h4>
           </div>
         </div>
+        <img
+          className="hidden md:block"
+          src="/icon-arrow-right.svg"
+          alt="arrow right"
+        />
       </div>
     </>
   );
